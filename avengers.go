@@ -45,14 +45,13 @@ func (c *Client) CreateAvenger(avenger Avenger) (*Avenger, error) {
 	if err != nil {
 		return nil, err
 	}
-
-	var newAvenger Avenger
-	err = json.Unmarshal(body, &newAvenger)
+	var insertedID InsertedResult
+	err = json.Unmarshal(body, &insertedID)
 	if err != nil {
 		return nil, err
 	}
-
-	return &newAvenger, nil
+	avenger.ID = insertedID.InsertedID
+	return &avenger, nil
 }
 
 //UpdateAvengerByName will update an Avenger
