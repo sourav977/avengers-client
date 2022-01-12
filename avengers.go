@@ -83,7 +83,7 @@ func (c *Client) UpdateAvengerByName(avenger Avenger) (*UpdateResult, error) {
 
 //DeleteAvengerByName will delete an Avenger
 func (c *Client) DeleteAvengerByName(avengerName string) (*DeleteResult, error) {
-	req, err := http.NewRequest("PUT", fmt.Sprintf("%s/avengers/deleteAvengerByName", c.HostURL), http.NoBody)
+	req, err := http.NewRequest("DELETE", fmt.Sprintf("%s/avengers/deleteAvengerByName", c.HostURL), http.NoBody)
 	req.URL.Query().Add("name", avengerName)
 	if err != nil {
 		return nil, err
